@@ -1,0 +1,19 @@
+#!/bin/sh
+# jarunixOS 图形会话（X 客户端）：openbox 负责窗口装饰，Java 桌面外壳负责其余部分。
+export XDG_SESSION_TYPE=x11
+export XDG_CURRENT_DESKTOP=jarunixOS
+
+if command -v openbox >/dev/null 2>&1; then
+    openbox --config-file /etc/xdg/openbox/rc.xml &
+fi
+sleep 1
+
+EDITION="$(cat /etc/jarunix-edition 2>/dev/null || echo personal)"
+VERSION="$(cat /etc/jarunix-version 2>/dev/null || echo 1.0)"
+
+exec java \
+     -DjarunixOS.edition="$EDITION" \
+     -DjarunixOS.version="$VERSION" \
+     -Dawt.useSystemAAFontSettings=on \
+     -Dswing.aatext=true \
+     -jar /opt/jarunix/jarunix-shell.jar

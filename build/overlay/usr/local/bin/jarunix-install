@@ -1,0 +1,5 @@
+#!/bin/sh
+# 以 root 身份启动 Java 图形化安装程序
+exec sudo -E java \
+     -DjarunixOS.edition="$(cat /etc/jarunix-edition 2>/dev/null || echo personal)" \
+     -jar /opt/jarunix/jarunix-installer.jar "$@"
