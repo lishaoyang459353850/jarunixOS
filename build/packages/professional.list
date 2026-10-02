@@ -1,17 +1,19 @@
-# jarunixOS 1.0 专业版包清单
-# 专业版 = 个人版全部内容 + 开发者工具链
+# jarunixOS 1.0 专业版包清单（增量）
+# 专业版 = 个人版全部内容 + 以下开发者工具链
+#
+# 注：本清单通过 mmdebstrap 的 --include= 追加传入，与 personal.list 合并后构建。
 
 # --- 开发工具链（专业版增量）---
-openjdk-21-jdk-headless
-default-jdk-headless
-gcc
-g++
-make
-cmake
-gdb
+openjdk-21-jdk
 git
-subversion
-maven
+curl
+wget
+vim
 python3
 python3-pip
-python3-venv
+jq
+tree
+netcat-openbsd
+build-essential
+gdb
+cmake

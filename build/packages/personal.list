@@ -1,71 +1,77 @@
-# jarunixOS 1.0 个人版包清单
-# 面向普通用户的图形化桌面环境：Java 运行库 + X11 + Java 桌面外壳 + 图形化安装器
+# jarunixOS 1.0 个人版包清单（Debian 13 trixie，amd64）
+# 已通过 QEMU 实机启动验证的软件集合：Java 运行库 + Xorg + openbox + Java 桌面外壳 + 图形化安装器
+#
+# 注：本清单通过 mmdebstrap 的 --include= 传入（逗号分隔），构建脚本会读取本文件。
 
-# --- 内核与基础系统 ---
+# --- 内核与 initramfs ---
 linux-image-amd64
 initramfs-tools
-systemd
-systemd-sysv
-dbus
+firmware-linux-free
 
-# --- 实时系统（Live）支持 ---
+# --- Live 系统支持 ---
 live-boot
 live-config
 live-config-systemd
+systemd-sysv
+dbus
+dbus-x11
 
-# --- Java 运行库（系统核心）---
-openjdk-21-jre-headless
-default-jre-headless
-
-# --- 图形栈：Xorg + 轻量窗口管理器 ---
-xserver-xorg
-xserver-xorg-core
-xserver-xorg-input-all
-xserver-xorg-video-all
-xinit
-xauth
-openbox
-xterm
-fonts-dejavu-core
-fonts-noto-cjk
-x11-utils
-x11-xserver-utils
-
-# --- 本地化与输入 ---
+# --- 本地化 ---
 locales
 console-setup
 keyboard-configuration
 tzdata
 
-# --- 常用命令行工具 ---
-bash-completion
-nano
-vim-tiny
-less
-htop
-rsync
-curl
-wget
+# --- 基础工具 ---
 ca-certificates
-
-# --- 安装器后端依赖 ---
-parted
-fdisk
-dosfstools
-e2fsprogs
-squashfs-tools
+sudo
+less
+nano
 rsync
-grub-pc-bin
-grub-efi-amd64-bin
-grub2-common
-os-prober
+xz-utils
+zstd
+bzip2
+unzip
+file
+procps
+psmisc
 
 # --- 硬件与网络 ---
 pciutils
 usbutils
 iproute2
-iputils-ping
-netbase
-network-manager
-firmware-linux-free
-sudo
+isc-dhcp-client
+wpasupplicant
+net-tools
+iw
+rfkill
+
+# --- 图形栈：Xorg + openbox ---
+xserver-xorg-core
+xserver-xorg-video-vesa
+xserver-xorg-video-fbdev
+xserver-xorg-input-libinput
+xinit
+xauth
+x11-utils
+x11-xserver-utils
+x11-xkb-utils
+xkb-data
+xterm
+openbox
+fonts-dejavu-core
+fonts-wqy-zenhei
+
+# --- Java 运行库（系统核心）---
+openjdk-21-jre
+
+# --- 安装器后端依赖 ---
+parted
+gdisk
+dosfstools
+e2fsprogs
+grub-pc-bin
+grub-efi-amd64-bin
+grub-common
+os-prober
+squashfs-tools
