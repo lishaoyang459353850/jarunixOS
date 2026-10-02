@@ -7,10 +7,12 @@ ISO 体积控制在 800 MB 以内。
 
 ## 状态
 
-- ✅ **个人版 ISO 已在 QEMU 实机启动验证通过**：ISOLINUX 菜单 → 内核
+- ✅ **个人版与专业版 ISO 均已在 QEMU 实机启动验证通过**：引导菜单 → 内核
   `6.12.107+deb13-amd64` → live-boot → tty1 自动登录 → Xorg → **自研 Java Swing
   桌面外壳正常显示**（任务栏、开始菜单、桌面图标、时钟、壁纸）。
-- 个人版镜像体积 **434 MB**，满足 < 800 MB 的体积要求。
+- 镜像体积：个人版 **442 MiB**、专业版 **654 MiB**，均满足 < 800 MB 的体积要求。
+- 随版本提供 Windows 图形化安装向导（`src/wininstaller/`）：可把镜像写入 U 盘做成
+  启动盘，也可只导出 `.iso` 文件。
 - 桌面外壳与安装程序全部源码位于本仓库 `src/`，以 GPL-3.0-or-later 开源。
 
 ## 特性
@@ -21,6 +23,7 @@ ISO 体积控制在 800 MB 以内。
 | 图形会话 | Xorg + openbox，会话层为自研 Java Swing 桌面外壳 |
 | 桌面外壳 | `jarunix-shell`，纯 Java，负责任务栏、开始菜单、桌面图标、应用启动 |
 | 安装程序 | `jarunix-installer`，纯 Java Swing 向导，分区/格式化/部署/引导全流程 |
+| Windows 安装向导 | `src/wininstaller/`，纯 Python 标准库（tkinter），可编译为单文件 `.exe`，支持写入 U 盘或导出 ISO |
 | 运行时 | OpenJDK 21 (LTS) |
 | 版本 | Personal / Professional |
 | 许可 | GPL-3.0-or-later |
@@ -60,11 +63,12 @@ chrootless 构建会引入四类只有实机启动才会暴露的缺陷，`build
 ## 目录结构
 
 ```
-build/         构建脚本、包清单、配置与 rootfs 覆盖层
-build/tools/   initramfs 重建与动态库闭包求解工具
-src/shell/     Java 桌面外壳
-src/installer/ Java 图形化安装程序
-docs/          开发日志与架构说明
+build/            构建脚本、包清单、配置与 rootfs 覆盖层
+build/tools/      initramfs 重建与动态库闭包求解工具
+src/shell/        Java 桌面外壳
+src/installer/    Java 图形化安装程序
+src/wininstaller/ Windows 安装向导（Python，可编译为单文件 exe）
+docs/             开发日志与架构说明
 ```
 
 ## 许可
