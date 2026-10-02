@@ -1,0 +1,12 @@
+PRETTY_NAME="jarunixOS 1.0"
+NAME="jarunixOS"
+VERSION_ID="1.0"
+VERSION="1.0 (trixie)"
+VERSION_CODENAME=trixie
+ID=jarunixos
+ID_LIKE=debian
+HOME_URL="https://github.com/lishaoyang459353850/jarunixOS"
+SUPPORT_URL="https://github.com/lishaoyang459353850/jarunixOS/issues"
+BUG_REPORT_URL="https://github.com/lishaoyang459353850/jarunixOS/issues"
+LOGO=jarunixos
+ANSI_COLOR="38;2;38;139;210"

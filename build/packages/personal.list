@@ -51,7 +51,7 @@ ca-certificates
 # --- 安装器后端依赖 ---
 parted
 fdisk
- dosfstools
+dosfstools
 e2fsprogs
 squashfs-tools
 rsync
