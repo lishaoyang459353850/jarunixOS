@@ -140,7 +140,8 @@ ISOLINUX 菜单 → linux 6.12.107+deb13-amd64 → live-boot → tty1 自动登�
 - 左侧图标栏：4 个 Java2D 自绘图标
 - 右下角 `jarunixOS` 水印
 
-体积：rootfs 1.2 GB → squashfs 366 MB → **ISO 434 MB**，满足 < 800 MB 要求。
+体积：rootfs 1.2 GB → squashfs 366 MB → **ISO 442 MiB**，满足 < 800 MB 要求。
+专业版：rootfs 1.9 GB → squashfs 605 MB → **ISO 654 MiB**。
 
 ## 8. 开源托管
 
@@ -149,7 +150,15 @@ ISOLINUX 菜单 → linux 6.12.107+deb13-amd64 → live-boot → tty1 自动登�
 - 已推送：`src/` 全部 17 个 Java 源文件、`build/` 全部构建脚本与配置、
   `build/overlay/` 覆盖层、`build/packages/` 包清单、`docs/` 文档
 
-## 9. 待续
+## 9. 后续进展
 
-- 专业版 ISO 重建（套用个人版的四项修复后重新打包与实机验证）
-- 源码包与 GitHub 仓库内容随最新修复保持同步
+- **专业版 ISO 已重建并实机验证**：套用个人版的四项修复后重新打包，QEMU 中同样
+  启动到自研 Java 桌面。体积 rootfs 1.9 GB → squashfs 605 MB → ISO 654 MiB。
+- **引导菜单乱码修复**：早期 ISO 使用 `PROMPT 1` 裸提示符 + `SAY` 中文说明，
+  syslinux 的位图字体不含中文字形，菜单显示为方块并最终落在 `boot:` 提示符。
+  改为 `UI vesamenu.c32` 图形菜单、`PROMPT 0`、文字全部使用 ASCII 后，BIOS 与
+  UEFI 两侧菜单均正常显示。
+- **新增 Windows 图形化安装向导**（`src/wininstaller/`，Python + tkinter，可编译为
+  单文件 exe）：六页向导，可选版本、可选「写入 U 盘」或「导出 ISO」；构建期可把
+  两个镜像追加进 exe 尾部，得到单文件内嵌双镜像的安装程序。
+- 源码包与 GitHub 仓库内容随最新修复保持同步。
