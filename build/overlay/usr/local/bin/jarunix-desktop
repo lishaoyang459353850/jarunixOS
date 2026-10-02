@@ -3,6 +3,14 @@
 export XDG_SESSION_TYPE=x11
 export XDG_CURRENT_DESKTOP=jarunixOS
 
+echo "=== jarunix-desktop 启动 $(date) ==="
+echo "DISPLAY=$DISPLAY  USER=$(id -un)"
+if command -v java >/dev/null 2>&1; then
+    echo "java: $(command -v java)"
+else
+    echo "错误：PATH 中找不到 java"
+fi
+
 if command -v openbox >/dev/null 2>&1; then
     openbox --config-file /etc/xdg/openbox/rc.xml &
 fi
@@ -10,10 +18,14 @@ sleep 1
 
 EDITION="$(cat /etc/jarunix-edition 2>/dev/null || echo personal)"
 VERSION="$(cat /etc/jarunix-version 2>/dev/null || echo 1.0)"
+echo "版本: $EDITION $VERSION"
 
-exec java \
+java \
      -DjarunixOS.edition="$EDITION" \
      -DjarunixOS.version="$VERSION" \
      -Dawt.useSystemAAFontSettings=on \
      -Dswing.aatext=true \
      -jar /opt/jarunix/jarunix-shell.jar
+RC=$?
+echo "=== java 退出，退出码 $RC ==="
+exit $RC
