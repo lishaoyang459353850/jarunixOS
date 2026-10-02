@@ -28,5 +28,6 @@ log "构建 jarunixOS $JARUNIX_VERSION / $JARUNIX_EDITION / $JARUNIX_ARCH (Debia
 "$BUILD_DIR/01-bootstrap.sh"
 "$BUILD_DIR/02-customize.sh"
 "$BUILD_DIR/03-build-java.sh"
+"$BUILD_DIR/05-fixup.sh"      # 收尾修复：Xorg setuid / 符号链接 / initramfs
 "$BUILD_DIR/04-make-iso.sh"
 log "完成：$OUT_DIR/$ISO_NAME"
