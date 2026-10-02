@@ -1,0 +1,71 @@
+# jarunixOS 1.0 个人版包清单
+# 面向普通用户的图形化桌面环境：Java 运行库 + X11 + Java 桌面外壳 + 图形化安装器
+
+# --- 内核与基础系统 ---
+linux-image-amd64
+initramfs-tools
+systemd
+systemd-sysv
+dbus
+
+# --- 实时系统（Live）支持 ---
+live-boot
+live-config
+live-config-systemd
+
+# --- Java 运行库（系统核心）---
+openjdk-21-jre-headless
+default-jre-headless
+
+# --- 图形栈：Xorg + 轻量窗口管理器 ---
+xserver-xorg
+xserver-xorg-core
+xserver-xorg-input-all
+xserver-xorg-video-all
+xinit
+xauth
+openbox
+xterm
+fonts-dejavu-core
+fonts-noto-cjk
+x11-utils
+x11-xserver-utils
+
+# --- 本地化与输入 ---
+locales
+console-setup
+keyboard-configuration
+tzdata
+
+# --- 常用命令行工具 ---
+bash-completion
+nano
+vim-tiny
+less
+htop
+rsync
+curl
+wget
+ca-certificates
+
+# --- 安装器后端依赖 ---
+parted
+fdisk
+ dosfstools
+e2fsprogs
+squashfs-tools
+rsync
+grub-pc-bin
+grub-efi-amd64-bin
+grub2-common
+os-prober
+
+# --- 硬件与网络 ---
+pciutils
+usbutils
+iproute2
+iputils-ping
+netbase
+network-manager
+firmware-linux-free
+sudo
