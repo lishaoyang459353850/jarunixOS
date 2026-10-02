@@ -1,0 +1,7 @@
+build/out/
+build/work/
+build/dist/
+*.iso
+*.img
+*.jar
+*.class
